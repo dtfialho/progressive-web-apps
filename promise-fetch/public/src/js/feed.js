@@ -4,7 +4,7 @@ var closeCreatePostModalButton = document.querySelector('#close-create-post-moda
 
 function openCreatePostModal() {
   createPostArea.style.display = 'block';
-  if (deferredPrompt !== 'undefined' && deferredPrompt !== null) {
+  if (deferredPrompt) {
     deferredPrompt.prompt();
 
     deferredPrompt.userChoice.then(function(choiceResult) {
