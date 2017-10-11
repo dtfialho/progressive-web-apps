@@ -70,8 +70,16 @@ self.addEventListener('activate', function(event) {
 //   );
 // });
 
+// cache only
+// self.addEventListener('fetch', function(event) {
+//   event.respondWith(
+//     caches.match(event.request)
+//   );
+// });
+
+// network only
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    caches.match(event.request)
+    fetch(event.request)
   );
 });
