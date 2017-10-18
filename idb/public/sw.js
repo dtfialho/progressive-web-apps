@@ -1,5 +1,5 @@
 var CACHE_STATIC_NAME = 'static-v15';
-var CACHE_DYNAMIC_NAME = 'dynamic-v2';
+var CACHE_DYNAMIC_NAME = 'dynamic-v3';
 var STATIC_FILES = [
   '/',
   '/index.html',
@@ -67,9 +67,10 @@ function isInArray(string, array) {
   }
   return array.indexOf(cachePath) > -1;
 }
+
 self.addEventListener('fetch', function (event) {
 
-  var url = 'https://pwagram-99adf.firebaseio.com/posts';
+  var url = 'https://pwagram-285d1.firebaseio.com/posts.json';
   if (event.request.url.indexOf(url) > -1) {
     event.respondWith(
       caches.open(CACHE_DYNAMIC_NAME)

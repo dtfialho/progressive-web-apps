@@ -85,13 +85,12 @@ function createCard(data) {
 }
 
 function updateUI(data) {
-  clearCards();
-  for (var i = 0; i < data.length; i++) {
+  for(var i = 0; i < data.length; i++) {
     createCard(data[i]);
   }
 }
 
-var url = 'https://pwagram-99adf.firebaseio.com/posts.json';
+var url = 'https://pwagram-285d1.firebaseio.com/posts.json';
 var networkDataReceived = false;
 
 fetch(url)
@@ -102,9 +101,11 @@ fetch(url)
     networkDataReceived = true;
     console.log('From web', data);
     var dataArray = [];
-    for (var key in data) {
+    for(var key in data) {
       dataArray.push(data[key]);
     }
+
+    clearCards();
     updateUI(dataArray);
   });
 
@@ -119,10 +120,12 @@ if ('caches' in window) {
       console.log('From cache', data);
       if (!networkDataReceived) {
         var dataArray = [];
-        for (var key in data) {
+        for(var key in data) {
           dataArray.push(data[key]);
         }
-        updateUI(dataArray)
+
+        clearCards();
+        updateUI(dataArray);
       }
     });
 }
